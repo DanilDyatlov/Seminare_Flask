@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Обувь
+{% endblock %}
+
+{% block content %}
+{% for shoe in shoes_list %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src={{shoe.photo}} alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{shoe.name}}</h5>
+        <p class="card-text">Цена: {{shoe.cost}} руб.</p>
+        <a href="#" class="btn btn-primary">Купить</a>
+    </div>
+</div>
+{%endfor%}
+{% endblock %}
