@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Блок вывода flash сообщений -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="d-flex justify-content-center alert {{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- Контейнер с формой регистрации -->
+<div class="container d-flex justify-content-center">
+    <form method="POST" action="{{ url_for('registration') }}">
+        <h2 class="fw-semibold text-center mt-5">Форма регистрации</h2>
+        {{ form.csrf_token }}
+        {% for field in form if field.name != 'csrf_token' %}
+        <div class="row fw-bolder text-left text-bg-info pb-1">
+            {% if field.name != 'birthday' and field.name != 'consent' %}
+                {{ field.label }}<br>
+                {{ field }}
+            {% elif field.name == 'birthday' %}
+                <div class="col-5 pt-1">{{ field.label }}</div>
+                <div class="col pt-1">{{ field }}</div>
+            {% elif field.name == 'consent' %}
+                <div class="col-8 pt-1">{{ field.label }}</div>
+                <div class="col pt-3">{{ field }}</div>
+            {% endif %}
+            {% if field.errors %}
+            <ul class="alert alert-danger justify-content-center">
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <!-- Кнопка формы -->
+        <div class="d-flex justify-content-center">
+            <input class="btn mt-2 btn-info fw-semibold" type="submit" value="Зарегистрироваться">
+        </div>
+    </form>
+</div>
+{% endblock %}
