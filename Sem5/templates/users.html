@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+        <div class="row-4">
+            <a href="{{ url_for('create_user') }}" class="btn btn-primary m-3">Создать нового пользователя</a>
+        </div>
+    {% block create_user %}
+    {% endblock %}
+</div>
+<div class="container">
+    <table class="table table-sm table-striped">
+        <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

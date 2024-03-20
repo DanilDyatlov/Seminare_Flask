@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="d-flex pt-3 justify-content-center">
+        <h3>Добро пожаловать!</h3>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <a href="{{url_for('get_users_list')}}" class="btn btn-info">Перейти к списку пользователей</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

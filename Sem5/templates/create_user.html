@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+        <div class="row-4">
+            <a href="{{ url_for('create_user') }}" class="btn btn-primary m-3">Создать нового пользователя</a>
+        </div>
+</div>
+    {% block create_user %}
+        <div class="container d-flex justify-content-center">
+            <div class="row-4">
+                <h3>{ToDo: Форма создания нового пользователя}</h3>
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}
